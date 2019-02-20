@@ -1,0 +1,47 @@
+Spring Boot + Accessing Data with MongoDB
+
+------------ Install and launch MongoDB
+With your project set up, you can install and launch the MongoDB database.
+
+If you are using a Mac with homebrew, this is as simple as:
+
+$ brew install mongodb
+With MacPorts:
+
+$ port install mongodb
+For other systems with package management, such as Redhat, Ubuntu, Debian, CentOS, and Windows, see instructions at http://docs.mongodb.org/manual/installation/.
+
+After you install MongoDB, launch it in a console window. This command also starts up a server process.
+
+$ mongod
+You probably won’t see much more than this:
+
+all output going to: /usr/local/var/log/mongodb/mongo.log
+
+
+------------ mongodb
+1) install mongodb 
+2) start mongodb cd /Users/bnb/mongodb/bin <Bin's local PC> $ ./mongod 
+3) create database "contract" $ ./mongo 
+> use contract 
+4) create collections > db.createCollection("message") 
+5) query collection > db.order.find({});
+
+refer to : https://spring.io/guides/gs/accessing-data-mongodb/
+
+------------ to run the application
+$mvn clean
+
+$mvn package && java -jar target/gs-spring-boot-mongodb-0.1.0.jar	
+
+As our Application implements CommandLineRunner, the run method is invoked automatically when boot starts. You should see something like this (with other stuff like queries as well):
+
+== Customers found with findAll():
+Customer[id=51df1b0a3004cb49c50210f8, firstName='Alice', lastName='Smith']
+Customer[id=51df1b0a3004cb49c50210f9, firstName='Bob', lastName='Smith']
+
+== Customer found with findByFirstName('Alice'):
+Customer[id=51df1b0a3004cb49c50210f8, firstName='Alice', lastName='Smith']
+== Customers found with findByLastName('Smith'):
+Customer[id=51df1b0a3004cb49c50210f8, firstName='Alice', lastName='Smith']
+Customer[id=51df1b0a3004cb49c50210f9, firstName='Bob', lastName='Smith']
